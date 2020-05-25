@@ -7,7 +7,7 @@ Thumbnail: http://i.imgur.com/IDclUIv.png
 
 # Data Wrangling
 
-I recently updated [Viz](http://donnemartin.com/viz/) with data from GitHub repos created in 2016.  Below are some details of how the raw data is wrangled into visualizations.
+I recently updated [Viz](https://savannahar68.github.io/viz/) with data from GitHub repos created in 2016. Below are some details of how the raw data is wrangled into visualizations.
 
 ## Data Flow
 
@@ -17,15 +17,14 @@ I recently updated [Viz](http://donnemartin.com/viz/) with data from GitHub repo
 
 Mining data directly from GitHub, `Viz` is powered by the [GitHub API](https://developer.github.com/v3/) and leverages the following:
 
-* [`github3.py`](https://github.com/sigmavirus24/github3.py) to access the GitHub API through Python.
-* [`pandas`](https://github.com/pydata/pandas) in the following [IPython Notebook](https://github.com/donnemartin/viz/blob/master/githubstats/data_wrangling.ipynb) for data wrangling.
-* [Google Maps API](https://developers.google.com/maps/?hl=en) through [`geocoder`](https://github.com/DenisCarriere/geocoder) for location data.
-* [Tableau Public](https://public.tableau.com/s/) for visualizations.*
+- [`github3.py`](https://github.com/sigmavirus24/github3.py) to access the GitHub API through Python.
+- [`pandas`](https://github.com/pydata/pandas) in the following [IPython Notebook](https://github.com/donnemartin/viz/blob/master/githubstats/data_wrangling.ipynb) for data wrangling.
+- [Google Maps API](https://developers.google.com/maps/?hl=en) through [`geocoder`](https://github.com/DenisCarriere/geocoder) for location data.
+- [Tableau Public](https://public.tableau.com/s/) for visualizations.\*
 
 In the future, [Google BigQuery](https://cloud.google.com/bigquery/) along with [GitHub Archive](https://www.githubarchive.org/) could also supplement the GitHub API.
 
 ## Imports
-
 
 ```python
 import re
@@ -37,7 +36,6 @@ import pandas as pd
 
 Load the repos data and drop duplicates:
 
-
 ```python
 repos = pd.read_csv("data/2016/repos-dump.csv", quotechar='"', skipinitialspace=True)
 print('Shape before dropping duplicates', repos.shape)
@@ -48,10 +46,6 @@ repos.head()
 
     Shape before dropping duplicates (8043, 5)
     Shape after  dropping duplicates (8040, 5)
-
-
-
-
 
 <div>
 <table border="1" class="dataframe">
@@ -110,10 +104,7 @@ repos.head()
 </table>
 </div>
 
-
-
 Separate out the `user` and `repo` from `full_name` into new columns:
-
 
 ```python
 def extract_user(line):
@@ -129,10 +120,6 @@ repos.head()
 ```
 
     (8040, 7)
-
-
-
-
 
 <div>
 <table border="1" class="dataframe">
@@ -203,12 +190,9 @@ repos.head()
 </table>
 </div>
 
-
-
 ## Prepare User Data
 
 Load the users data and drop duplicates:
-
 
 ```python
 users = pd.read_csv("data/2016/user-geocodes-dump.csv", quotechar='"', skipinitialspace=True)
@@ -220,10 +204,6 @@ users.head()
 
     Shape before dropping duplicates (5991, 8)
     Shape after  dropping duplicates (5991, 8)
-
-
-
-
 
 <div>
 <table border="1" class="dataframe">
@@ -300,18 +280,12 @@ users.head()
 </table>
 </div>
 
-
-
 Rename column `id` to `user`:
-
 
 ```python
 users.rename(columns={'id': 'user'}, inplace=True)
 users.head()
 ```
-
-
-
 
 <div>
 <table border="1" class="dataframe">
@@ -388,12 +362,9 @@ users.head()
 </table>
 </div>
 
-
-
 ## Merge Repo and User Data
 
 Left join repos and users:
-
 
 ```python
 repos_users = pd.merge(repos, users, on='user', how='left')
@@ -406,10 +377,6 @@ repos_users.head()
     Shape repos: (8040, 7)
     Shape users: (5991, 8)
     Shape repos_users: (8040, 14)
-
-
-
-
 
 <div>
 <table border="1" class="dataframe">
@@ -522,12 +489,9 @@ repos_users.head()
 </table>
 </div>
 
-
-
 ## Tidy Up Repo and User Data
 
 Re-order the columns:
-
 
 ```python
 repos_users = repos_users.reindex_axis(['full_name',
@@ -550,10 +514,6 @@ repos_users.head()
 
     (8040, 14)
 
-
-
-
-
 <div>
 <table border="1" class="dataframe">
   <thead>
@@ -665,12 +625,9 @@ repos_users.head()
 </table>
 </div>
 
-
-
 ## Add Overall Ranks
 
 Rank each element based on number of stars:
-
 
 ```python
 repos_users['rank'] = repos_users['stars'].rank(ascending=False)
@@ -679,10 +636,6 @@ repos_users.head()
 ```
 
     (8040, 15)
-
-
-
-
 
 <div>
 <table border="1" class="dataframe">
@@ -801,21 +754,15 @@ repos_users.head()
 </table>
 </div>
 
-
-
 ## Verify Results: Users
 
 Equivalent [GitHub search query](https://github.com/search?utf8=%E2%9C%93&q=created%3A2016-01-01..2016-12-31+stars%3A%3E%3D100+user%3Adonnemartin&type=Repositories&ref=searchresults): `created:2016-01-01..2016-12-31 stars:>=100 user:donnemartin`
 
-*Note: The data might be slightly off, as the search query will take into account data up to when the query was executed.  Data in this notebook was mined on January 1, 2017 to 'freeze' the results for the year 2016.  The longer you run the search from January 1, 2017, the larger the discrepancy.*
-
+_Note: The data might be slightly off, as the search query will take into account data up to when the query was executed. Data in this notebook was mined on January 1, 2017 to 'freeze' the results for the year 2016. The longer you run the search from January 1, 2017, the larger the discrepancy._
 
 ```python
 repos_users[repos_users['user'] == 'donnemartin']
 ```
-
-
-
 
 <div>
 <table border="1" class="dataframe">
@@ -880,14 +827,11 @@ repos_users[repos_users['user'] == 'donnemartin']
 </table>
 </div>
 
-
-
 ## Verify Results: Python Repos
 
 Equivalent [GitHub search query](https://github.com/search?utf8=%E2%9C%93&q=created%3A2016-01-01..2016-12-31+stars%3A%3E%3D100+language%3Apython&type=Repositories&ref=searchresults): `created:2016-01-01..2016-12-31 stars:>=100 language:python`
 
-*Note: The data might be slightly off, as the search query will take into account data up to when the query was executed.  Data in this notebook was mined on January 1, 2017 to 'freeze' the results for the year 2016.  The longer you run the search from January 1, 2017, the larger the discrepancy.*
-
+_Note: The data might be slightly off, as the search query will take into account data up to when the query was executed. Data in this notebook was mined on January 1, 2017 to 'freeze' the results for the year 2016. The longer you run the search from January 1, 2017, the larger the discrepancy._
 
 ```python
 print(repos_users[repos_users['language'] == 'Python'].shape)
@@ -895,10 +839,6 @@ repos_users[repos_users['language'] == 'Python'].head()
 ```
 
     (866, 15)
-
-
-
-
 
 <div>
 <table border="1" class="dataframe">
@@ -1017,14 +957,11 @@ repos_users[repos_users['language'] == 'Python'].head()
 </table>
 </div>
 
-
-
 ## Verify Results: Overall Repos
 
 Equivalent [GitHub search query](https://github.com/search?utf8=%E2%9C%93&q=created%3A2016-01-01..2016-12-31+stars%3A%3E%3D100&type=Repositories&ref=searchresults): `created:2016-01-01..2016-12-31 stars:>=100`
 
-*Note: The data might be slightly off, as the search query will take into account data up to when the query was executed.  Data in this notebook was mined on January 1, 2017 to 'freeze' the results for the year 2016.  The longer you run the search from January 1, 2017, the larger the discrepancy.*
-
+_Note: The data might be slightly off, as the search query will take into account data up to when the query was executed. Data in this notebook was mined on January 1, 2017 to 'freeze' the results for the year 2016. The longer you run the search from January 1, 2017, the larger the discrepancy._
 
 ```python
 print(repos_users.shape)
@@ -1032,10 +969,6 @@ repos_users.head()
 ```
 
     (8040, 15)
-
-
-
-
 
 <div>
 <table border="1" class="dataframe">
@@ -1154,12 +1087,9 @@ repos_users.head()
 </table>
 </div>
 
-
-
 ## Output Results
 
 Write out the results to csv:
-
 
 ```python
 users.to_csv('data/2016/users.csv', index=False)
@@ -1167,13 +1097,12 @@ repos_users.to_csv('data/2016/repos-users-geocodes.csv', index=False)
 repos_users.to_csv('data/2016/repos-users.csv', index=False)
 ```
 
-
 ```python
 repos_rank = repos_users.reindex_axis(['full_name', 'rank'], axis=1)
 repos_rank.to_csv('data/2016/repos-ranks.csv', index=False)
 ```
 
- Visualize in Tableau:
+Visualize in Tableau:
 
 <p align="center">
     <img src="http://i.imgur.com/MKjzLwp.png" alt="" class="img-responsive"/></a>
