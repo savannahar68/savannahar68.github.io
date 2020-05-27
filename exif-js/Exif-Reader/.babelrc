@@ -1,0 +1,16 @@
+{
+    "env": {
+        "development": {
+            "presets": [["env", {
+                "targets.uglify": true,
+                "modules": "umd"
+            }]]
+        },
+        "test": {
+            "presets": ["env"],
+            "plugins": [
+                "rewire"
+            ]
+        }
+    }
+}

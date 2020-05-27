@@ -1,9 +1,0 @@
-<footer class="post-info">
-    <span class="published">
-        <i></i><time datetime="{{ article.date.isoformat() }}"> {{ article.locale_date }}</time>
-    </span>
-
-    {% include 'includes/taglist.html' %}
-    {% import 'includes/translations.html' as translations with context %}
-    {{ translations.translations_for(article) }}
-</footer><!-- /.post-info -->

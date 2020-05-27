@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" manifest="photocleaner.appcache">
+<head>
+<script src="https://codepo8.github.io/image-data-cleaner/scripts/exif.js"></script>
+  <script type="text/javascript" src="main.js"></script>
+      <link rel="stylesheet" type="text/css" href="main.css" media="screen" />
+  <meta charset="UTF-8">
+  <title>Remove personal data from photos before sharing them on the internet</title>
+  <meta name="viewport" content="width=device-width">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+</head>
+<body>
+<header>
+  <h1>Remove personal data from photos before sharing them on the internet</h1>
+</header>
+<section>
+<p>Before you upload photos to the web, you might want to check if you don't give out too much information. Cameras, smartphones and other hardware does not only store the image information but also the time and date, what camera was used and possibly even the location on the planet in every image in <a href="http://en.wikipedia.org/wiki/Exchangeable_image_file_format">EXIF</a> data.</p>
+<p>Using this tool you can see this data, and show an image that has all of it removed to send out.</p>
+<p><strong>Your photo does not get uploaded anywhere, all of this happens on your device, in your browser. It even works offline.</strong></p>
+
+
+<div id="app">
+<input id="getfile" type="file" accept="image/*" />
+<div id="output"></div>
+<canvas></canvas>
+</div>
+
+</section>
+</body>
+</html>
