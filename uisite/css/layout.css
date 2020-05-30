@@ -203,7 +203,7 @@ ul#nav li.current a{ color: #F06000; }
 }
 #about p {
    line-height: 30px;
-   color: #7A7A7A;
+   color: #c1c1c1;
 }
 #about .profile-pic {
    position: relative;
@@ -791,10 +791,10 @@ call-to-action .button {
    background: #191919;
    padding-top: 96px;
    padding-bottom: 102px;
-   color: #636363;
+   color: #adadad;
 }
 #contact .section-head { margin-bottom: 42px; }
-
+   
 #contact a, #contact a:visited  { color: #11ABB0; }
 #contact a:hover, #contact a:focus { color: #fff; }
 
@@ -927,13 +927,13 @@ call-to-action .button {
 footer {
    padding-top: 48px;
    margin-bottom: 48px;
-   color: #303030;
+   color: #a8a8a8;
    font-size: 14px;
    text-align: center;
    position: relative;
 }
 
-footer a, footer a:visited { color: #525252; }
+footer a, footer a:visited { color: #d8d8d8; }
 footer a:hover, footer a:focus { color: #fff; }
 
 /* copyright */
