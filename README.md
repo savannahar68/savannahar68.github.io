@@ -18,7 +18,7 @@ Personal Website
 The MIT License (MIT)
 
 
-The code of Clipboard History is released under the MIT License. There is no limitation for both acadmic and commercial usage.
+The code of this repository is released under the MIT License. There is no limitation for both acadmic and commercial usage.
 Feel free to raise issue if you find one! Contributions are always welcomed :)
 
 Template taken from [Jekyll](https://github.com/b2a3e8/jekyll-theme-console) and [here](https://github.com/ajitr)
