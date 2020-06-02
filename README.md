@@ -21,6 +21,6 @@ The MIT License (MIT)
 The code of this repository is released under the MIT License. There is no limitation for both acadmic and commercial usage.
 Feel free to raise issue if you find one! Contributions are always welcomed :)
 
-## Credits
+## Template
 
 UI based website template [link](https://www.styleshout.com/free-templates/ceevee/)
