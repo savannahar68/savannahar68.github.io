@@ -1,6 +1,6 @@
 # [savannahar68.github.io](savannahar68.github.io)
 
-Personal Website
+Personal Website/Portfolio
 
 ### Website can be viewed in 2 modes :
 1. [Terminal Mode](http://savannahar68.github.io/)
