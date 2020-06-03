@@ -24,3 +24,4 @@ Feel free to raise issue if you find one! Contributions are always welcomed :)
 ## Template
 
 UI based website template [link](https://www.styleshout.com/free-templates/ceevee/)
+Terminal Based Template [link](https://github.com/ajitr)
