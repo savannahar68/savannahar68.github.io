@@ -25,4 +25,4 @@ Feel free to raise issue if you find one! Contributions are always welcomed :)
 
 UI based website template [link](https://www.styleshout.com/free-templates/ceevee/)
 
-Terminal Based Template [link](https://github.com/ajitr)
+Cloned and modified from [link](https://github.com/ajitr)
