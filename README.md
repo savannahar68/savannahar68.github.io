@@ -1,6 +1,6 @@
 # [savannahar68.github.io](savannahar68.github.io)
 
-Personal Website
+Personal Website/Portfolio
 
 ### Website can be viewed in 2 modes :
 1. [Terminal Mode](http://savannahar68.github.io/)
@@ -21,6 +21,8 @@ The MIT License (MIT)
 The code of this repository is released under the MIT License. There is no limitation for both acadmic and commercial usage.
 Feel free to raise issue if you find one! Contributions are always welcomed :)
 
-## Credits
+## Template
 
 UI based website template [link](https://www.styleshout.com/free-templates/ceevee/)
+
+Cloned and modified from [link](https://github.com/ajitr)
